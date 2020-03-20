@@ -121,3 +121,35 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+
+# Logging configurations
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'default': {
+            'format': "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
+            'datefmt': "%Y-%m-%d %H:%M:%S"
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+            'formatter': 'default'
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'INFO'
+    },
+    'loggers': {
+        'django': {
+            'level': 'INFO',
+            'handlers': ['console'],
+            'propagate': False
+        },
+    }
+}

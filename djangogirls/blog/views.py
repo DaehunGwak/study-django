@@ -1,4 +1,10 @@
 
 from django.shortcuts import render
+import logging
 
-# Create your views here.
+logger = logging.getLogger(__name__)
+
+
+def post_list(request):
+    logger.info(f"request: {request}")
+    return render(request, 'blog/post_list.html', {})
