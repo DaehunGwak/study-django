@@ -1,20 +1,17 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Django Girls blog</title>
-    </head>
-    <body>
-        <div>
-            <h1><a href="">Django Girls Blog</a></h1>
-        </div>
+{% extends 'blog/base.html' %}
 
-        {% for post in posts %}
-            <div>
-                <hr/>
-                <h2>Title: {{ post.title }}</h2>
-                <h5>Date: {{ post.created_date }}</h5>
+{% block content %}
+    {% for post in posts %}
+        <div class="post">
+            {% if post.title == "" or post.title is None %}
+                <h2><a href="">Title is null</a></h2>
+            {% else %}
+                <h2><a href="">{{ post.title }}</a></h2>
+            {% endif %}
+            <div class="date">
+                <p>{{ post.created_date }}</p>
             </div>
-        {% endfor %}
-
-    </body>
-</html>
+            <p>{{ post.text|linebreaksbr }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}
