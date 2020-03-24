@@ -19,6 +19,8 @@ h1, h2, h3, h4 {
 }
 
 .date {
+    margin: 8px;
+    float: right;
     color: #828282;
 }
 
@@ -43,4 +45,8 @@ h1, h2, h3, h4 {
 
 .post h2 a, .post h2 a:visited {
     color: #000000;
+}
+
+.post .edit-button {
+    float: right;
 }

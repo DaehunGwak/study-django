@@ -25,7 +25,7 @@ SECRET_KEY = 'a99v9tfjs^np&6i)k)^i#2)mcn@9pb&ncfiw(p0*h%56ix=e7i'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.pythonanywhere.com']
 
 
 # Application definition
@@ -136,14 +136,13 @@ LOGGING = {
     },
     'handlers': {
         'console': {
-            'level': 'INFO',
             'class': 'logging.StreamHandler',
             'formatter': 'default'
         },
     },
     'root': {
-        'handlers': ['console'],
-        'level': 'INFO'
+        'level': 'DEBUG',
+        'handlers': ['console']
     },
     'loggers': {
         'django': {
