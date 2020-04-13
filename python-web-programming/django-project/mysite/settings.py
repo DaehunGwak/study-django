@@ -35,7 +35,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'bookmark.apps.BookmarkConfig'  # 'bookmark' 도 가능하지만 설정 클래스로 등록하는것이 더 정확
+    'bookmark.apps.BookmarkConfig',  # 'bookmark' 도 가능하지만 설정 클래스로 등록하는것이 더 정확
+    'blog.apps.BlogConfig',
 ]
 
 MIDDLEWARE = [
