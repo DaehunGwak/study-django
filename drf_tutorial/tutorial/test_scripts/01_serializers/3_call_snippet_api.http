@@ -1,0 +1,24 @@
+# 먼저 `python manage.py runserver` 를 실행한 상태에서 테스트해주세요.
+# 본 파일은 pycharm에서 실행했습니다.
+
+GET http://localhost:8000/snippets/
+Accept: application/json
+
+###
+
+GET http://localhost:8000/snippets/2/
+Accept: application/json
+
+###
+
+POST http://localhost:8000/snippets/
+Content-Type: application/json
+
+{
+  "title": "post-test",
+  "code": "printf(\"hello world!\");",
+  "linenos": true,
+  "language": "c"
+}
+
+###
