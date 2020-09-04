@@ -6,9 +6,13 @@ from snippets.serializers import SnippetModelSerializer
 
 
 @api_view(['GET', 'POST'])
-def snippet_list(request):
+def snippet_list(request, format=None):  # /snippets.json 으로 요청시 format에
     """
     List all code snippets, or create a new snippet
+
+    format:
+        /snippets.json 으로 요청시 format에 `json` 이 들어오게 됨
+        drf browsable-api 에 더 상세히 나와 있음
     """
     if request.method == 'GET':
         snippets = Snippet.objects.all()
@@ -24,7 +28,7 @@ def snippet_list(request):
 
 
 @api_view(['GET', 'PUT', 'DELETE'])
-def snippet_detail(request, pk):
+def snippet_detail(request, pk, format=None):
     """
     Retrieve, update or delete a code snippet
     """
