@@ -8,7 +8,7 @@
 - Tutorial 1: Serialization [branch](https://github.com/DaehunGwak/study-django/tree/drf-tutorial/1-serialization/drf_tutorial/tutorial)
 - Tutorial 2: Requests and Responses [branch](https://github.com/DaehunGwak/study-django/tree/drf-tutorial/2-req-res/drf_tutorial/tutorial)
 - Tutorial 3: Class-based Views [branch](https://github.com/DaehunGwak/study-django/tree/drf-tutorial/3-class-view/drf_tutorial/tutorial)
-
+- Tutorial 4: Authentication & Permissions [branch](https://github.com/DaehunGwak/study-django/tree/drf-tutorial/4-auth/drf_tutorial/tutorial)
 ## terms idk
 
 - `DRY` Don't repeat yourself
