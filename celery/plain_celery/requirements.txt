@@ -1,0 +1,15 @@
+amqp==5.0.2
+billiard==3.6.3.0
+celery==5.0.2
+certifi==2020.6.20
+click==7.1.2
+click-didyoumean==0.0.3
+click-repl==0.1.6
+importlib-metadata==2.0.0
+kombu==5.0.2
+prompt-toolkit==3.0.8
+pytz==2020.4
+six==1.15.0
+vine==5.0.0
+wcwidth==0.2.5
+zipp==3.4.0
