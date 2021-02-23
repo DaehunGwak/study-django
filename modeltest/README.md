@@ -16,14 +16,32 @@
 - django 3.1
 - django rest framework 3.12
 
-## DJANGO_SETTINGS_MODULE export
+## 해결방안 
 
-production 레벨의 db 마이그레이션이 필요할 땐
+### 1. settings 변수로 model 클래스내 필드구성을 분기
+
+> 클래스의 인스턴스 변수를 if 로 분기하는 것이 조금 이상해 보인다 (어짜피 안티 패턴이라 상관 없는 것인가..)
+
+```python
+class DummyTable(models.Model):
+    if settings.ENV_NAME == 'env_local':
+        local_field = models.IntegerField('로컬 필드', default=0, blank=True)
+    else:
+        production_field = models.IntegerField("프로덕션 필드", default=1, blank=False)
+```
+
+## 추가적으로
+
+### DJANGO_SETTINGS_MODULE export
+
+production 레벨의 db 마이그레이션이 필요할 땐 export 후 사용
+
+> OS에 (.bashrc, .zshrc 등) 미리 등록해서 사용해두면 환경 구성 시 편함
 
 ```shell
+# production 마이그레이션 필요 시
 export DJANGO_SETTINGS_MODULE=modeltest.settings.production
 
-or
-
-export DJANGO_SETTINGS_MODULE=modeltest.settings.
+# local 마이그레이션 사용으로 초기화 하고 싶을 시
+export DJANGO_SETTINGS_MODULE=modeltest.settings.local
 ```

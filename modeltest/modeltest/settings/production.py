@@ -10,3 +10,8 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.production.sqlite3',
     }
 }
+
+
+# 환경 이름
+
+ENV_NAME = 'env_production'
