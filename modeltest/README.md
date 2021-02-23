@@ -18,7 +18,7 @@
 
 ## 해결방안 
 
-### 1. settings 변수로 model 클래스내 필드구성을 분기
+### 1. settings 변수로 model 클래스 내 필드구성을 분기
 
 > 클래스의 인스턴스 변수를 if 로 분기하는 것이 조금 이상해 보인다 (어짜피 안티 패턴이라 상관 없는 것인가..)
 
@@ -28,6 +28,54 @@ class DummyTable(models.Model):
         local_field = models.IntegerField('로컬 필드', default=0, blank=True)
     else:
         production_field = models.IntegerField("프로덕션 필드", default=1, blank=False)
+```
+
+### 2. settings 변수로 abstract model import를 분기하여 상속하는 구성
+
+> 클래스 인스턴스 변수를 if 로 분기하는 것 보단 import를 if 분기하는 것이 더 깔끔해 보임 (주관적)
+
+`models.py`
+
+```python
+from testapp.model_abstracts import DummyAbstractTable
+
+class DummyTable(DummyAbstractTable):
+    pass
+```
+
+`models_abstracts/__init__.py`
+
+```python
+from django.conf import settings
+
+if settings.ENV_NAME == 'env_local':
+    from testapp.model_abstracts.local import *
+else:
+    from testapp.model_abstracts.production import *
+```
+
+`models_abstracts/local.py`
+
+```python
+from django.db import models
+
+class DummyAbstractTable(models.Model):
+    class Meta:
+        abstract = True
+
+    local_field = models.IntegerField('로컬 필드', default=0, blank=True)
+```
+
+`models_abstracts/production.py`
+
+```python
+from django.db import models
+
+class DummyAbstractTable(models.Model):
+    class Meta:
+        abstract = True
+
+    production_field = models.IntegerField('프로덕션 필드', default=1, blank=True)
 ```
 
 ## 추가적으로
